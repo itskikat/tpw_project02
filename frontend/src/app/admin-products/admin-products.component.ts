@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common'; 
+import { Location } from '@angular/common';
 // CHILD - DIALOG
 import { MatDialog  } from '@angular/material/dialog';
 import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
@@ -20,9 +20,9 @@ import { Product } from '../models/Product';
 export class AdminProductsComponent implements OnInit {
 
   authenticated: boolean | undefined;
-  success: boolean = false; 
+  success: boolean = false;
   products: Product[] = [];
-  @Input() 
+  @Input()
   product_to_ediit: Product;
 
   constructor(
@@ -31,7 +31,7 @@ export class AdminProductsComponent implements OnInit {
     private productService: ProductService,
     private checkAuthUserService: CheckAuthUserService,
     private dialog: MatDialog
-  ) 
+  )
   {
     /*
     if (!checkAuthUserService.check()) {
@@ -72,4 +72,8 @@ export class AdminProductsComponent implements OnInit {
 		this.location.back();
   }
 
+  remove(product: Product) {
+    this.productService.deleteProduct(product).subscribe(res => window.location.reload());
+
+  }
 }

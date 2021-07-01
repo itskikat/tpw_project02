@@ -26,7 +26,7 @@
         </button>
       </ng-template>
 
-      <span style="margin-right: 3%">Carrinho</span>
+      <span style="margin-right: 3%" *ngIf="authenticated && is_customer">Carrinho</span>
       <a style="margin-right: 1%" routerLink="/login" *ngIf="!authenticated">| Login |</a>
       <a style="margin-right: 1%" routerLink="/signup" *ngIf="!authenticated">Signup |</a>
       <a style="margin-right: 1%" routerLink="/admin/stock" *ngIf="authenticated && !is_customer">Verificar Stock |</a>
@@ -40,7 +40,7 @@
           <mat-icon>how_to_reg</mat-icon>
           <span>Detalhes da Conta</span>
         </button>
-        <button mat-menu-item routerLink="/orders">
+        <button mat-menu-item routerLink="/orders" *ngIf="authenticated && is_customer">
           <mat-icon>store_mall_directory</mat-icon>
           <span>Histórico de Encomendas</span>
         </button>

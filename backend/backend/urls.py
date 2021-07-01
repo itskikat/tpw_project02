@@ -27,7 +27,7 @@ urlpatterns = [
     path('ws/products', views.get_products),
     path('ws/productcre', views.create_product),
     path('ws/productupd', views.update_product),
-    path('ws/productdel/<int:id>', views.del_product),
+    path('ws/productdel', views.del_product),
 
     path('ws/category', views.get_category),
     path('ws/categories', views.get_categories),

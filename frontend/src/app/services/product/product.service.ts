@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
-import { HttpClient } from "@angular/common/http";
-import { environment } from "../../../environments/environment";
-import { Product } from 'src/app/models/Product';
+import {Injectable} from '@angular/core';
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
+import {Product} from 'src/app/models/Product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getProducts(): Observable<Product[]> {
     const url = environment.API_BASE_URL + 'products';
@@ -29,5 +30,10 @@ export class ProductService {
   editProduct(data: {}): Observable<any> {
     const url = environment.API_BASE_URL + 'productupd';
     return this.http.put(url, data)
+  }
+
+  deleteProduct(product: Product): Observable<any> {
+    const url = environment.API_BASE_URL + 'productdel?id=' + product.id;
+    return this.http.get<any>(url);
   }
 }

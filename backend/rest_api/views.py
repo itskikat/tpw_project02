@@ -78,14 +78,16 @@ def update_product(request):
 # web service to delete a product
 
 
-@api_view(['DELETE'])
-def del_product(request, id):
+@api_view(['GET'])
+def del_product(request):
+    id = int(request.GET['id'])
+    print(id)
     try:
         product = Product.objects.get(id=id)
     except Product.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     product.delete()
-    return Response(status=status.HTTP_204_NO_CONTENT)
+    return Response(status=status.HTTP_200_OK)
 
 
 '''
