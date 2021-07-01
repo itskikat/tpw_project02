@@ -1,57 +1,68 @@
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 
-<header style="display: flex; align-items: center; padding: 30px 0 40px;">
-    <div class="header-box mat-elevation-z4">
+<mat-sidenav-container class="sidenav-container" >
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+    <header style="display: flex; align-items: center; padding: 30px 0 40px;">
+      <div class="header-box mat-elevation-z4">
         <div class="row">
-            <div class="col-lg-12 text-center">
-                <div style="font-size: 46px; color: #ffffff; font-weight: 700;">
-                    <h2>{{ product.name }}</h2>
-                    <div class="breadcrumb__option" style="display: inline-block; font-size: 16px; color: #ffffff; font-weight: 700; margin-right: 25px; position: relative;">
-                        <a routerLink="">Home</a>
-                        <span style="display: inline-block; font-size: 16px; color: #ffffff; margin-left: 10px;">{{ product.name }}, {{ product.brand.name }}</span>
-                    </div>
-                </div>
+          <div class="col-lg-12 text-center">
+            <div style="font-size: 46px; color: #ffffff; font-weight: 700;">
+              <h2>{{ product.name }}</h2>
+              <div class="breadcrumb__option" style="display: inline-block; font-size: 16px; color: #ffffff; font-weight: 700; margin-right: 25px; position: relative;">
+                <a routerLink="">Home</a>
+                <span style="display: inline-block; font-size: 16px; color: #ffffff; margin-left: 10px;">{{ product.name }}, {{ product.brand.name }}</span>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</header>
+      </div>
+    </header>
 
 
-<!-- Product Details Section Begin -->
-<section>
-    <div class="product-details-box mat-elevation-z4">
+    <!-- Product Details Section Begin -->
+    <section>
+      <div class="product-details-box mat-elevation-z4">
         <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="product-details-box__image" >
-                    <div>
-                        <img src="{{ product.image }}" alt="">
-                    </div>
-                </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="product-details-box__image" >
+              <div>
+                <img src="{{ product.image }}" alt="">
+              </div>
             </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="product-details-box__details">
-                    <h3>{{ product.name }}</h3>
-                    <div>{{ product.price | currency:"EUR" }}</div>
-                    <p>{{ product.description }}</p>
-                    <button mat-raised-button color="primary">ADICIONAR AO CARRINHO</button>
-                    <ul>
-                        <li><b>Disponibilidade: </b>
-                            <span>Em stock: {{ product.quantity }} unidades</span>
-                        </li>
-                        <li><b>Marca: </b> <span>{{ product.brand.name }}</span></li>
-                        <li><b>Categoria: </b>
-                                <span *ngFor="let cat of product.category">{{ cat.name }} </span>
-                        </li>
-                    </ul>
-                </div>
-                <br>
-                <div >
-                    <button mat-raised-button class="button__go-back" (click)="goBack()">VOLTAR</button>
-                </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="product-details-box__details">
+              <h3>{{ product.name }}</h3>
+              <div>{{ product.price | currency:"EUR" }}</div>
+              <p>{{ product.description }}</p>
+              <button mat-raised-button class="button__go-back" (click)="goBack()">VOLTAR</button>
+              <ul>
+                <li><b>Disponibilidade: </b>
+                  <span>Em stock: {{ product.quantity }} unidades</span>
+                </li>
+                <li><b>Marca: </b> <span>{{ product.brand.name }}</span></li>
+                <li><b>Categoria: </b>
+                  <span *ngFor="let cat of product.category">{{ cat.name }} </span>
+                </li>
+              </ul>
             </div>
+            <br>
+
+          </div>
         </div>
-    </div>
-    <br>
-</section>
-<!-- Product Details Section End -->
+      </div>
+      <br>
+    </section>
+    <!-- Product Details Section End -->
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

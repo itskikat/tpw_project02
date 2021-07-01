@@ -29,18 +29,18 @@
 }
 
 .product-details-box__image img {
-    width: 300px; 
+    width: 300px;
     height: 300px;
 }
 
 .product-details-box__details h3 {
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
     font-size: 40px;
 }
 
 .product-details-box__details div {
-    font-size: 30px; 
-    color: #dd2222; 
+    font-size: 30px;
+    color: #dd2222;
     margin-bottom: 30px;
 }
 
@@ -49,9 +49,9 @@
 }
 
 .product-details-box__details ul {
-    border-top: 1px solid #ebebeb; 
-    padding-top: 40px; 
-    margin-top: 30px; 
+    border-top: 1px solid #ebebeb;
+    padding-top: 40px;
+    margin-top: 30px;
     font-size: 15px;
 }
 
@@ -59,3 +59,78 @@
     float: right;
     margin-right: 15px;
 }
+
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 50vh;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+
+a:link, a:visited {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  color: lightblue;
+}
+
