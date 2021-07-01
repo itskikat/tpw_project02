@@ -93,6 +93,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+"""
 
 DATABASES = {
     'default': {
@@ -100,8 +101,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+ """
 
-"""
 
 DATABASES = {
      'default': {
@@ -113,7 +114,6 @@ DATABASES = {
          'PORT': 3306,
      }
  }
- """
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
