@@ -10,6 +10,7 @@ from rest_framework.exceptions import AuthenticationFailed
 import jwt, datetime
 from itertools import chain
 import pprint as pp
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -19,7 +20,6 @@ import pprint as pp
 
 
 # web service to get a specific product
-
 
 @api_view(['GET'])
 def get_product(request):
@@ -34,7 +34,6 @@ def get_product(request):
 
 # web service to get a list of products
 
-
 @api_view(['GET'])
 def get_products(request):
     import time
@@ -48,7 +47,6 @@ def get_products(request):
 
 # web service to create a product
 
-
 @api_view(['POST'])
 def create_product(request):
     serializer = ProductSerializer(data=request.data)
@@ -60,7 +58,7 @@ def create_product(request):
 
 # web service to update a product
 
-
+@login_required
 @api_view(['PUT'])
 def update_product(request):
     id = request.data['id']
@@ -76,7 +74,6 @@ def update_product(request):
 
 
 # web service to delete a product
-
 
 @api_view(['GET'])
 def del_product(request):
@@ -97,7 +94,6 @@ def del_product(request):
 
 # web service to get a specific category
 
-
 @api_view(['GET'])
 def get_category(request):
     id = int(request.GET['id'])
@@ -110,7 +106,6 @@ def get_category(request):
 
 
 # web service to get a list of categories
-
 
 @api_view(['GET'])
 def get_categories(request):
@@ -138,7 +133,7 @@ def get_categoryproducts(request):
 
 # web service to create a category
 
-
+@login_required
 @api_view(['POST'])
 def create_category(request):
     serializer = CategorySerializer(data=request.data)
@@ -150,7 +145,7 @@ def create_category(request):
 
 # web service to update a category
 
-
+@login_required
 @api_view(['PUT'])
 def update_category(request):
     id = request.data['id']
@@ -167,7 +162,7 @@ def update_category(request):
 
 # web service to delete a category
 
-
+@login_required
 @api_view(['DELETE'])
 def del_category(request, id):
     try:
@@ -220,7 +215,7 @@ def get_brands(request):
 
 # web service to create a brand
 
-
+@login_required
 @api_view(['POST'])
 def create_brand(request):
     serializer = BrandSerializer(data=request.data)
@@ -232,7 +227,7 @@ def create_brand(request):
 
 # web service to update a brand
 
-
+@login_required
 @api_view(['PUT'])
 def update_brand(request):
     id = request.data['id']
@@ -249,7 +244,7 @@ def update_brand(request):
 
 # web service to delete a brand
 
-
+@login_required
 @api_view(['DELETE'])
 def del_brand(request, id):
     try:
@@ -267,7 +262,7 @@ def del_brand(request, id):
 
 # web service to get a specific order
 
-
+@login_required
 @api_view(['GET'])
 def get_order(request):
     id = int(request.GET['id'])
@@ -281,7 +276,7 @@ def get_order(request):
 
 # web service to get a list of orders, for a given user
 
-
+@login_required
 @api_view(['GET'])
 def get_userorders(request):
     username = request.GET['username']
@@ -323,6 +318,7 @@ def get_userorders(request):
 
 
 # web service to create a order
+@login_required
 @api_view(['POST'])
 def create_order(request):
     user = User.objects.get(username=request.data['username'])
@@ -351,6 +347,7 @@ def create_order(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@login_required
 @api_view(['PUT'])
 def update_order(request):
     id = request.data['id']
@@ -366,6 +363,7 @@ def update_order(request):
 
 
 # web service to delete a order
+@login_required
 @api_view(['DELETE'])
 def del_order(request, id):
     try:
@@ -496,6 +494,7 @@ def get_user_type(request):
 
 
 # web service to get a specific customer
+@login_required
 @api_view(['GET'])
 def get_customer(request):
     id = int(request.GET['id'])

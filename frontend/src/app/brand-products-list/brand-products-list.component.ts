@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common'; 
+import { Location } from '@angular/common';
 import { Emitters } from '../emitters/emitters';
 // MODEL
 import { Brand } from '../models/Brand';
@@ -47,8 +47,7 @@ export class BrandProductsListComponent implements OnInit {
 
   goBack(): void {
 		this.location.back();
-    this.router.navigate(['/']);
-    window.location.reload();
+
   }
 
 
