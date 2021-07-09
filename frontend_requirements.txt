@@ -1,0 +1,2 @@
+Please set up Angular Material project by running the following command:
+- ng add @angular/material

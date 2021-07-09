@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Editar detalhes da conta</h2>
+<mat-dialog-content class="mat-typography">
+    <!-- New-Product Form -->
+    <mat-form [formGroup]="editAccountForm">
+        <div class="row">
+            <input hidden [(ngModel)]="customer.user.id" name="id" id="id" type="number" class="fadeIn second" placeholder="Id do Utilizador" formControlName="id">
+            <br>
+            <input [(ngModel)]="customer.user.username" name="username" id="username" type="text" class="fadeIn second" placeholder="Username Atual" formControlName="username">
+            <mat-hint class="form-hint-input">Username Atual</mat-hint>
+            <br><br>
+        </div>
+    </mat-form> 
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button cdkFocusInitial (click)="close()">Fechar</button>
+</mat-dialog-actions>

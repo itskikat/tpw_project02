@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<form #search="ngForm" (ngSubmit)="submitSearchQuery(search.value)">
+  <div class="input-group">
+      <input type="search" name="search"  class="form-control" ngModel/>
+  </div>
+</form>
+<p>Procurar por produtos, marcas e categorias.</p>
+<a href="" (click)="submitSearchQuery()">Limpar Pesquisa</a>
+

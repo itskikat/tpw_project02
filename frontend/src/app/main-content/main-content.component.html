@@ -1,0 +1,83 @@
+<mat-sidenav-container class="sidenav-container" >
+
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === true">
+
+
+    <app-shopping-cart></app-shopping-cart>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+
+      <button *ngIf="authenticated && is_customer; else shoppingCartButtonNotAuthenticated" (click)="drawer.toggle()" mat-icon-button
+              color="accent"
+              aria-label="Example icon button with a menu icon">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+
+      <ng-template #shoppingCartButtonNotAuthenticated >
+        <button onclick="alert('Faça login como cliente para aceder ao carrinho');" mat-icon-button
+                color="accent"
+                aria-label="Example icon button with a menu icon" *ngIf="authenticated && !is_customer">
+          <mat-icon>shopping_cart</mat-icon>
+        </button>
+      </ng-template>
+
+      <span style="margin-right: 3%" *ngIf="authenticated && is_customer">Carrinho</span>
+      <a style="margin-right: 1%" routerLink="/login" *ngIf="!authenticated">| Login |</a>
+      <a style="margin-right: 1%" routerLink="/signup" *ngIf="!authenticated">Signup |</a>
+      <a style="margin-right: 1%" routerLink="/admin/stock" *ngIf="authenticated && !is_customer">Verificar Stock |</a>
+      <a style="margin-right: 1%" routerLink="/admin/addproduct" *ngIf="authenticated && !is_customer">Adicionar Novo Produto |</a>
+      <a style="margin-right: 2%" *ngIf="authenticated" (click)="logout()" style="cursor: pointer;">Logout |</a>
+      <button style="margin-right: 1%" *ngIf="authenticated" mat-icon-button [matMenuTriggerFor]="menu" aria-label="User additional information">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="accountDetailsDialog()">
+          <mat-icon>how_to_reg</mat-icon>
+          <span>Detalhes da Conta</span>
+        </button>
+        <button mat-menu-item routerLink="/orders" *ngIf="authenticated && is_customer">
+          <mat-icon>store_mall_directory</mat-icon>
+          <span>Histórico de Encomendas</span>
+        </button>
+      </mat-menu>
+
+      <button style="margin-right: 5%" mat-icon-button [matMenuTriggerFor]="menu2" aria-label="Categorias">
+        Categorias
+        <mat-icon>storefront</mat-icon>
+      </button>
+      <mat-menu #menu2="matMenu">
+        <ng-template let-category ngFor [ngForOf]="categories">
+          <button mat-menu-item (click)="setCategoryId(category.id)">
+            <mat-icon>fastfood</mat-icon>
+            <span>{{ category.name }}</span>
+          </button>
+        </ng-template>
+      </mat-menu>
+
+      <button style="margin-right: 1%" mat-icon-button [matMenuTriggerFor]="menu3" aria-label="Marcas">
+        Marcas
+        <mat-icon>storefront</mat-icon>
+      </button>
+      <mat-menu #menu3="matMenu">
+        <ng-template let-brand ngFor [ngForOf]="brands">
+          <button mat-menu-item (click)="setBrandId(brand.id)">
+            <mat-icon>fastfood</mat-icon>
+            <span>{{ brand.name }}</span>
+          </button>
+        </ng-template>
+      </mat-menu>
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+      <app-products *ngIf="!category_id && !brand_id"></app-products>
+      <app-category-products-list *ngIf="category_id"></app-category-products-list>
+      <app-brand-products-list *ngIf="brand_id"></app-brand-products-list>
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

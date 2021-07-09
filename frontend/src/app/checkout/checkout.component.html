@@ -1,0 +1,61 @@
+<style>
+  a:link, a:visited {
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  a:hover, a:active {
+    color: lightblue;
+  }
+</style>
+
+<mat-sidenav-container class="sidenav-container">
+
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === true">
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+
+      <span style="margin-right: 3%">Carrinho</span>
+      <a style="margin-right: 1%" routerLink="/login" *ngIf="!authenticated">| Login |</a>
+      <a style="margin-right: 1%" routerLink="/signup" *ngIf="!authenticated">Signup |</a>
+      <a style="margin-right: 1%" *ngIf="authenticated" (click)="logout()">Logout</a>
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <section>
+      <div class="container">
+        <h1 id="products_title">Products</h1>
+        <div class="row">
+          <ng-template let-item ngFor [ngForOf]="items">
+            <div class="col-md-4">
+              <mat-card class="product-card">
+                <img mat-card-image src="{{item.image}}" alt="Product Image">
+                <mat-card-content>
+                  <mat-card-title>{{ item.name }}</mat-card-title>
+                  <mat-card-subtitle *ngFor="let category of item.category ">{{ item.brand.name }} - {{
+                    category.name }} <br> € {{ item.price }}
+                  </mat-card-subtitle>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-button (click)="removeProduct(item.id)">
+                    <mat-icon color="accent">remove_circle</mat-icon>
+                  </button>
+
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </ng-template>
+        </div>
+
+      </div>
+    </section>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

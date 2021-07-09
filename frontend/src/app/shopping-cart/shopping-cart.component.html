@@ -1,0 +1,55 @@
+<mat-toolbar>Carrinho</mat-toolbar>
+
+<mat-nav-list>
+  <div class="row" style="display: flex; justify-content: space-around; height: 5em;" *ngFor="let item of items">
+    <div class="col-6" style="display: flex;align-items: center;"><a style="word-break: break-word;" mat-list-item>{{item.item.name}}</a>
+    </div>
+    <div class="col" style="display: flex;align-items: center;"><a style="word-break: break-word;" (click)="increaseCount(item)" mat-list-item>x{{item.item_quantity}}</a>
+    </div>
+    <div class="col-3">
+      <a style="height: 100%" mat-list-item (click)="removeProduct(item.item.id)">
+        <mat-icon color="accent">delete</mat-icon>
+      </a>
+    </div>
+  </div>
+  <br>
+  <mat-divider></mat-divider>
+  <br>
+  <div *ngIf="!checkoutConfirmation && !cartEmptyError" class="row"
+       style="display: flex; justify-content: space-around; height: 3em;">
+    <button mat-button style="background-color: #ff4081;" (click)="onConfirmationCheckout()">
+      Checkout
+      <mat-icon color="primary">shopping_cart</mat-icon>
+    </button>
+  </div>
+  <div *ngIf="checkoutConfirmation && !cartEmptyError" class="row"
+       style="display: flex; justify-content: space-around; height: 5em;">
+
+    <div class="col" style="display: flex;align-items: center;"><a style="word-break: break-word;" mat-list-item>Tem a
+      certeza?</a>
+    </div>
+    <div class="col">
+      <a mat-list-item (click)="checkout()">
+        <mat-icon color="accent">check_circle</mat-icon>
+      </a>
+      <a mat-list-item (click)="offConfirmationCheckout()">
+        <mat-icon color="accent">highlight_off</mat-icon>
+      </a>
+    </div>
+
+  </div>
+  <div *ngIf="cartEmptyError" class="row" style="display: flex; justify-content: space-around; height: 5em;">
+
+    <div class="col" style="display: flex;align-items: center;">
+      <a style="word-break: break-word;" mat-list-item>
+        O carrinho está vazio!!!
+      </a>
+
+    </div>
+  </div>
+</mat-nav-list>
+
+<br>
+<br>
+<mat-toolbar>Total: {{total | number}} €</mat-toolbar>
+

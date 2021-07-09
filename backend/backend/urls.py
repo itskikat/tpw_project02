@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from rest_framework.authtoken import views as auth_views
 from rest_api import views
+from rest_api.views import LoginView, LogoutView, UserView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,16 +27,18 @@ urlpatterns = [
     path('ws/products', views.get_products),
     path('ws/productcre', views.create_product),
     path('ws/productupd', views.update_product),
-    path('ws/productdel/<int:id>', views.del_product),
+    path('ws/productdel', views.del_product),
 
     path('ws/category', views.get_category),
     path('ws/categories', views.get_categories),
+    path('ws/productsofcategory', views.get_categoryproducts),
     path('ws/categorycre', views.create_category),
     path('ws/categoryupd', views.update_category),
     path('ws/categorydel/<int:id>', views.del_category),
 
     path('ws/brand', views.get_brand),
     path('ws/brands', views.get_brands),
+    path('ws/productsofbrand', views.get_brandproducts),
     path('ws/brandcre', views.create_brand),
     path('ws/brandupd', views.update_brand),
     path('ws/branddel/<int:id>', views.del_brand),
@@ -46,5 +49,14 @@ urlpatterns = [
     path('ws/orderupd', views.update_order),
     path('ws/orderdel/<int:id>', views.del_order),
 
+    path('ws/signup', views.signup),
+    path('ws/login', LoginView.as_view()),
+    path('ws/logout', LogoutView.as_view()),
+    path('ws/user', UserView.as_view()),
+    path('ws/user/type', views.get_user_type),
+
+    path('ws/search-products', views.search_products),
+
+    path('ws/customer', views.get_customer),
 
 ]

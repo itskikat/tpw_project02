@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Editar detalhes do produto</h2>
+<mat-dialog-content class="mat-typography">
+    <!-- New-Product Form -->
+    <mat-form [formGroup]="editForm">
+        <div class="row">
+            <input hidden [(ngModel)]="data.product.id" name="id" id="id" type="number" class="fadeIn second" placeholder="Id do Produto" formControlName="id">
+            <br>
+            <input [(ngModel)]="data.product.name" name="name" id="name" type="text" class="fadeIn second" placeholder="Nome do Produto" formControlName="name">
+            <mat-hint class="form-hint-input">Nome do Produto</mat-hint>
+            <br><br>
+            <input [(ngModel)]="data.product.description" name="description" id="description" type="text" class="fadeIn second" placeholder="Descrição" formControlName="description">
+            <mat-hint class="form-hint-input">Descrição</mat-hint>
+            <br><br>
+            <select multiple [compareWith]="compator" [(ngModel)]="data.product.category" name="category" id="category" type="text" class="fadeIn third" placeholder="Categoria" formControlName="category">
+                <option *ngFor="let item of categories" [ngValue]="item.id" >
+                    {{ item.name }}
+                </option>
+            </select>
+            <mat-hint class="form-hint-input">Categoria</mat-hint>
+            <br><br>
+            <select [compareWith]="compator" [(ngModel)]="data.product.brand" name="brand" id="brand" type="text" class="fadeIn third" placeholder="Marca" formControlName="brand">
+                <option *ngFor="let item of brands" [ngValue]="item.id" >
+                    {{ item.name }}
+                </option>
+            </select>
+            <mat-hint class="form-hint-input">Marca</mat-hint>
+            <br><br>
+            <input [(ngModel)]="data.product.price" matInput name="price" id="price" type="number" step=".01"  class="fadeIn third" placeholder="Preço" formControlName="price">
+            <mat-hint class="form-hint-input">Preço</mat-hint>
+            <br><br>
+            <input [(ngModel)]="data.product.quantity" matInput name="quantity" id="quantity" type="number" class="fadeIn third" placeholder="Quantidade" formControlName="quantity">
+            <mat-hint class="form-hint-input">Quantidade</mat-hint>
+            <br><br>
+            <input [(ngModel)]="data.product.image" type="url" name="image" id="image" class="fadeIn third" placeholder="URL Imagem" formControlName="image">
+            <mat-hint class="form-hint-input">URL Imagem Representativa</mat-hint>
+            <br><br>
+        </div>
+    </mat-form> 
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Fechar</button>
+  <button mat-button cdkFocusInitial (click)="edit()">Editar</button>
+</mat-dialog-actions>

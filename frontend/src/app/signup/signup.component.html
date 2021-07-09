@@ -1,0 +1,26 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2>SIGNUP</h2>
+
+    <h1>Mercadinho dos Cliques</h1>
+    <!-- Login Form -->
+    <mat-form [formGroup]="signupForm">
+      <input type="text" formControlName="username" id="username" class="fadeIn second" name="username"
+             placeholder="username">
+      <input type="text" formControlName="password" id="password" class="fadeIn third" name="password"
+             placeholder="password">
+      <br>
+      <mat-radio-group formControlName="user_type">
+        <mat-radio-button value="customer">Cliente</mat-radio-button>
+        <br>
+        <mat-radio-button value="manager">Gestor</mat-radio-button>
+      </mat-radio-group>
+      <br>
+      <input type="submit" class="fadeIn fourth" value="submit" (click)="onSubmit()">
+
+    </mat-form>
+
+  </div>
+</div>
+

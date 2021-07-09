@@ -1,0 +1,25 @@
+.container {
+    text-align: center; 
+    margin-top: 20px;
+}
+
+#products_title {
+    font-weight: bold;
+}
+
+.row {
+    margin: auto;
+}
+
+.col-md-4 {
+    margin-bottom: 20px;
+}
+
+.product-card {
+    max-width: 400px;
+}
+
+.button__go-back {
+    float: right;
+    margin-right: 15px;
+}
