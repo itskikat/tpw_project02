@@ -3,7 +3,7 @@
 - Thus, the all-new version of **Mercadinho dos Cliques** is an Angular-App, using a Django-Rest API as the backbone for the majority of interactions. Similarly to before, it emulates an online grocery-store, providing all the functionalities needed to manage an online store, and buying items.
 - All the functionalities you expect to find are covered and implemented.
 
-
+<hr />
 
 ### Features
 There are two types of users in our system: an *administrator* and a *regular user*. A *regular user* cannot do everything an *administrator* can, and vice-versa. However, there are a couple of key-features that are available to both user-groups.
@@ -16,9 +16,9 @@ A brief breakdown of each can  be found in the following table
 | *CLIENT* | View all products in store; View a specific product details; Search for a product/brand; Purchase a(several) products; Place an order; Review its past orders; Manage its personal account | View the stores' stock; Edit a product; Add a new product |
 | *NOT LOGGED IN* | Create an Account; View all products in store; View a specific product details; Search for a product/brand | Purchase a(several) products; Place an order; Review its past orders; Manage its personal account; View the stores' stock; Edit a product; Add a new product
 
+<hr />
 
-
-#### Accessing the App
+### Accessing the App
 The app has been deployed in Heroku, and may be accessed via the following link [Mercadinho dos Cliques](https://tpw-angular-frontend.herokuapp.com/).<br>
 The backend of the app was deployed on a Raspbery Pi, and is accessible on the DNS - 94.60.22.100. The following link [Products endpoint](http://94.60.22.100/ws/products) is an example of an endpoint.
 
@@ -30,6 +30,10 @@ You can register yourself in order to gain access to some functionalities (as a 
 | *CLIENT* | cliente | cliente |
 
 
+<hr />
+
+### Implementation Details
+Further information can be found on the report, that is available (in pdf format) [here](https://github.com/itskikat/tpw_project02/blob/main/TPW_Report.pdf).
 
 ----------
 ## Authors
